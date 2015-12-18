@@ -1,3 +1,5 @@
+var fastsms = require(__dirname + "/src/fast-sms");
+
 module.exports = {
 
     checkCredits: function() {
