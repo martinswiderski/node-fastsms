@@ -10,7 +10,7 @@ module.exports = {
         return "not implemented";
     },
 
-    sendMessage: function() {
+    sendOneMessage: function() {
         return "not implemented";
     },
 

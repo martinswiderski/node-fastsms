@@ -5,7 +5,7 @@ describe("Core tests", function () {
     it("Methods not implemented", function () {
         expect(nodeFastSms.checkCredits()).toBe("not implemented");
         expect(nodeFastSms.checkMessageStatus()).toBe("not implemented");
-        expect(nodeFastSms.sendMessage()).toBe("not implemented");
+        expect(nodeFastSms.sendOneMessage()).toBe("not implemented");
         expect(nodeFastSms.reports()).toBe("not implemented");
         expect(nodeFastSms.createUser()).toBe("not implemented");
         expect(nodeFastSms.updateCredits()).toBe("not implemented");
