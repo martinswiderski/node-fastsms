@@ -1,12 +1,18 @@
 {
   "name": "node-fastsms",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "FastSMS SDK API",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://codebloke@bitbucket.org/codebloke/node-fastsms.git"
+    "url": "https://bitbucket.org/codebloke/node-fastsms.git"
   },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://bitbucket.org/codebloke/node-fastsms/src"
+    }
+  ],
   "scripts": {
     "test": "jasmine-node tests/"
   },
@@ -17,9 +23,12 @@
     "lodash": "^2.4.1",
     "q": "^1.1.2",
     "querystring": "^0.2.0",
+    "sync-request": "^2.1.0",
     "system": "0.1.0"
   },
   "devDependencies": {
-    "jslint": "^0.7.2"
+    "chai": "^3.4.1",
+    "jslint": "^0.7.2",
+    "mocha": "^2.3.4"
   }
 }
