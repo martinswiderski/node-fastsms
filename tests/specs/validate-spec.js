@@ -11,6 +11,12 @@ describe("Can validate data types", function () {
         expect(validate.scheduledDate("ABC")).toBe(false);
         expect(validate.scheduledDate("2016-06-12 14:00")).toBe(false);
 
+        expect(validate.emailAddress("jake@alo.com")).toBe(true);
+        expect(validate.emailAddress("jake-new@web.de")).toBe(true);
+        expect(validate.emailAddress("jake.new@web.de")).toBe(true);
+        expect(validate.emailAddress("EMAIL@NULL")).toBe(false);
+        expect(validate.emailAddress("ABC-NULL")).toBe(false);
+
     });
 });
 

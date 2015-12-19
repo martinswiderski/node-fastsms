@@ -7,6 +7,10 @@ validate = function validate() {
         return !isNaN(mobile) && (new String(mobile)).length > 11;
     },
 
+    this.emailAddress = function (email) {
+        return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(email);
+    },
+
     this.scheduledDate = function (date) {
         return (dateTool.reformatDateIso(date) !== false);
     };
