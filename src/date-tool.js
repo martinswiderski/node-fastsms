@@ -7,7 +7,7 @@ dateTool = function dateTool() {
      * @param input Date as string
      * @returns false|string
      */
-    this.reformatDate = function (input) {
+    this.reformatDateIso = function (input) {
         var str = new String(input);
 
         if (str.length<14 || isNaN(input)) {
