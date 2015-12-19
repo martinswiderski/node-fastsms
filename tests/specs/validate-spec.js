@@ -25,6 +25,12 @@ describe("Can validate data types", function () {
         expect(validate.ipAddress("172.144.21")).toBe(false);
         expect(validate.ipAddress("cool")).toBe(false);
 
+        expect(validate.hostName("cnn.com")).toBe(true);
+        expect(validate.hostName("bbc.co.uk")).toBe(true);
+
+        expect(validate.hostName("cnncom")).toBe(false);
+        expect(validate.hostName("bbc-uk")).toBe(false);
+
     });
 });
 

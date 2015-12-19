@@ -16,6 +16,9 @@ validate = function validate() {
     },
 
     this.hostName = function (host) {
+        if (host === (new String(host)).replace('.', '')) {
+            return false;
+        }
         return (/^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$/.test(host));
     },
 
