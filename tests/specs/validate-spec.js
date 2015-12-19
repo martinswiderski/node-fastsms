@@ -17,6 +17,14 @@ describe("Can validate data types", function () {
         expect(validate.emailAddress("EMAIL@NULL")).toBe(false);
         expect(validate.emailAddress("ABC-NULL")).toBe(false);
 
+        expect(validate.ipAddress("127.0.0.1")).toBe(true);
+        expect(validate.ipAddress("192.168.0.1")).toBe(true);
+        expect(validate.ipAddress("172.144.2.1")).toBe(true);
+        expect(validate.ipAddress("157.166.226.26")).toBe(true);
+
+        expect(validate.ipAddress("172.144.21")).toBe(false);
+        expect(validate.ipAddress("cool")).toBe(false);
+
     });
 });
 
