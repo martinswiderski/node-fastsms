@@ -8,7 +8,7 @@ validate = function validate() {
     },
 
     this.scheduledDate = function (date) {
-
+        return false;
     };
 
 };
