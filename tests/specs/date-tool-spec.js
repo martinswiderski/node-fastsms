@@ -9,5 +9,9 @@ describe("Can transform between formats", function () {
         expect(dateTool.reformatDateUnix("20160612140030")).toBe(1465740030);
         expect(dateTool.reformatDateUnix("2016-06-12 14:00")).toBe(false);
     });
+    it("Date is in the future", function () {
+        expect(dateTool.isDateInTheFuture("20190612140030")).toBe(true);
+        expect(dateTool.isDateInTheFuture("20120612140030")).toBe(false);
+    });
 });
 

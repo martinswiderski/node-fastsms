@@ -40,6 +40,12 @@ dateTool = function dateTool() {
             unix = moment(str).unix();
             return unix;
         }
+    },
+
+    this.isDateInTheFuture = function (input) {
+        var now = moment().unix(),
+            trg = this.reformatDateUnix(input);
+        return trg > now;
     }
 };
 
