@@ -1,14 +1,14 @@
-var validate;
+var validate,
+    dateTool = require('./date-tool');
 
 validate = function validate() {
 
     this.internationalMobile = function (mobile) {
-        var str = new String(mobile);
-        return !isNaN(mobile) && str.length > 11;
+        return !isNaN(mobile) && (new String(mobile)).length > 11;
     },
 
     this.scheduledDate = function (date) {
-        return false;
+        return (dateTool.reformatDate(date) !== false);
     };
 
 };
