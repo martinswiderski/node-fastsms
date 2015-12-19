@@ -1,4 +1,5 @@
-var dateTool;
+var moment = require('moment'),
+    dateTool;
 
 dateTool = function dateTool() {
 
@@ -28,6 +29,17 @@ dateTool = function dateTool() {
             'Z'
         ];
         return composite.join('');
+    },
+
+    this.reformatDateUnix = function (input) {
+        var unix = 0,
+            str  = this.reformatDateIso(input);
+        if (str === false) {
+            return str;
+        } else {
+            unix = moment(str).unix();
+            return unix;
+        }
     }
 };
 
