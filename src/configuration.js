@@ -18,9 +18,7 @@ function readFromEnvVars(key, deflt) {
 }
 
 module.exports = {
-
     hostname: readFromEnvVars('FAST_SMS_API_HOSTNAME', 'https://my.fastsms.co.uk/api'),
-    token: readFromEnvVars('FAST_SMS_TOKEN', '')
-
+    token: readFromEnvVars('FAST_SMS_TOKEN', 'not-set')
 };
 
