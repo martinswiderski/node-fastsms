@@ -31,6 +31,13 @@ describe("Can validate data types", function () {
         expect(validate.hostName("cnncom")).toBe(false);
         expect(validate.hostName("bbc-uk")).toBe(false);
 
+        expect(validate.typeOf("bbc-uk")).toBe('String');
+        expect(validate.typeOf(123)).toBe('Number');
+        expect(validate.typeOf(null)).toBe('Undefined');
+        expect(validate.typeOf(false)).toBe('Bool');
+        expect(validate.typeOf([])).toBe('Array');
+        expect(validate.typeOf({})).toBe('Object');
+
     });
 });
 

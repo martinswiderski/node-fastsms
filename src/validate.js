@@ -22,9 +22,23 @@ validate = function validate() {
         return (/^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$/.test(host));
     },
 
+    this.typeOf = function (subject) {
+        if (subject === false || subject === true) {
+            return 'Bool';
+        } else if (!subject) {
+            return 'Undefined';
+        } else if (subject === null) {
+            return 'Null';
+        } else {
+            return subject.constructor.name;
+        }
+    },
+
     this.scheduledDate = function (date) {
         return (dateTool.reformatDateIso(date) !== false);
     };
+
+
 
 };
 
