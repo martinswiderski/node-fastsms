@@ -9,7 +9,7 @@ var fastSms = require(__dirname + "/../src/fast-sms").setConfig(require(__dirnam
 if (!isNaN(sentId) && sentId > 0) {
     console.log('Message sent. ID: ' + sentId);
 } else {
-    console.log("Message not sent. Check environment variables for FAST_SMS_API_TOKEN\nUse: \nexport FAST_SMS_API_TOKEN=''\nto set the value");
+    console.log("Message not sent. Check errors and environment variable for FAST_SMS_API_TOKEN\nUse: \nexport FAST_SMS_API_TOKEN=''\nto set the value");
 }
 
 
