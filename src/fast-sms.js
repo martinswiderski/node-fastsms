@@ -71,12 +71,12 @@ fastsms = function fastsms() {
             // Payload for sending message ------------------------------
 
             var payload = {
-                    Token: this.config.token,
-                    Action: 'Send',
-                    DestinationAddress: destination,
-                    SourceAddress: source,
-                    Body: body
-                };
+                Token: this.config.token,
+                Action: 'Send',
+                DestinationAddress: destination,
+                SourceAddress: source,
+                Body: body
+            };
 
             if (valid.typeOf(validity) !== 'Undefined') {
                 payload['ValidityPeriod'] = validity;
@@ -109,6 +109,8 @@ fastsms = function fastsms() {
 
                 if (id < 0) {
                     console.log('ERROR: ' + errorCode.resolve(id));
+                } else {
+                    console.log('CREDITS LEFT: ' + this.checkCredits());
                 }
             }
 
@@ -120,9 +122,32 @@ fastsms = function fastsms() {
         return id;
     },
 
+    this.checkCredits = function () {
+        if (this.config.mock === false) {
+            var payload = {
+                Token: this.config.token,
+                Action: 'CheckCredits'
+            };
+
+            var uriCall = url.build(
+                this.config.protocol,
+                this.config.hostname,
+                this.config.path,
+                payload
+            );
+
+            var resp    = request('GET', uriCall),
+                credits = parseInt(resp.body.toString('utf-8'));
+
+            return credits;
+        }
+
+        return -1;
+    },
+
     this.generateMockId = function () {
         var id = Math.abs(parseInt(Math.floor(Math.random() * (1 - 999)) + 1)) + 10000;
-        valid.typeOf(id);
+        //valid.typeOf(id);
         return id;
     };
 
