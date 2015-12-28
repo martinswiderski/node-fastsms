@@ -111,6 +111,7 @@ fastsms = function fastsms() {
                     console.log('ERROR: ' + errorCode.resolve(id));
                 } else {
                     console.log('CREDITS LEFT: ' + this.checkCredits());
+                    console.log('STATUS: ' + this.checkMessageStatus(id));
                 }
             }
 
@@ -120,6 +121,29 @@ fastsms = function fastsms() {
         }
 
         return id;
+    },
+
+    this.checkMessageStatus = function (id) {
+        if (this.config.mock === false) {
+            var payload = {
+                MessageID: id,
+                Token: this.config.token,
+                Action: 'CheckMessageStatus'
+            };
+
+            var uriCall = url.build(
+                this.config.protocol,
+                this.config.hostname,
+                this.config.path,
+                payload
+            );
+
+            var resp   = request('GET', uriCall),
+                status = (new String(resp.body.toString('utf-8'))).trim();
+
+            return status;
+        }
+        return true;
     },
 
     this.checkCredits = function () {
