@@ -1,3 +1,4 @@
 #!/bin/bash
-export FAST_SMS_TOKEN='hello'
-echo $FAST_SMS_TOKEN
+export FAST_SMS_API_TOKEN=''
+echo $FAST_SMS_API_TOKEN
+node send-message.js
