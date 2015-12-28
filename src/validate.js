@@ -34,6 +34,11 @@ validate = function validate() {
         }
     },
 
+    this.formatValidityPeriod = function (hours) {
+        hours = parseInt(parseInt(hours) * 3600);
+        return hours;
+    },
+
     this.scheduledDate = function (date) {
         return (dateTool.reformatDateIso(date) !== false);
     };

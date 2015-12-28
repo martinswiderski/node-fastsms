@@ -13,12 +13,15 @@ function readFromEnvVars(key, deflt) {
             return deflt;
         }
         console.error('Required env var %s is required', key);
-        throw new Error('missing required env var: ' + key);
+        throw ('missing required env var: ' + key);
     }
 }
 
 module.exports = {
-    hostname: readFromEnvVars('FAST_SMS_API_HOSTNAME', 'https://my.fastsms.co.uk/api'),
-    token: readFromEnvVars('FAST_SMS_TOKEN', 'not-set')
+    mock: false,
+    hostname: readFromEnvVars('FAST_SMS_API_HOSTNAME', 'my.fastsms.co.uk'),
+    protocol: readFromEnvVars('FAST_SMS_API_PROTOCOL', 'https'),
+    path: readFromEnvVars('FAST_SMS_API_PATH', '/api'),
+    token: readFromEnvVars('FAST_SMS_API_TOKEN', 'not-set')
 };
 

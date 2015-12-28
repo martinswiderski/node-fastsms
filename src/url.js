@@ -39,19 +39,22 @@ url = function url() {
             path = !path ? '' : path;
 
             if (this.allowed[protocol] !== true) {
-                throw new Exception('Invalid protocol choice');
+                throw ('Invalid protocol choice');
             }
 
             if (validate.hostName(hostname) === false && validate.ipAddress(hostname) === false) {
-                throw new Exception('Invalid hostname');
+                throw ('Invalid hostname');
             }
 
             if (validate.typeOf(path) !== 'String') {
-                throw new Exception('Invalid URL path');
+                throw ('Invalid URL path');
             }
 
             if (validate.typeOf(getArguments) !== 'Object') {
-                throw new Exception('Invalid GET parameters');
+                console.log(validate.typeOf(getArguments));
+                console.log('ARGS');
+                console.log(getArguments);
+                throw ('Invalid GET parameters');
             }
 
             var out = [
@@ -66,6 +69,7 @@ url = function url() {
             return out.join('');
 
         } catch (exc) {
+            console.log(exc);
             return false;
         }
     };
