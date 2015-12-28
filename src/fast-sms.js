@@ -2,7 +2,8 @@ var fastsms,
     configuration = require("./configuration"),
     valid         = require("./validate"),
     url           = require("./url"),
-    request       = require('sync-request');
+    request       = require('sync-request'),
+    errorCode     = require('./error-code');
 
 fastsms = function fastsms() {
 
@@ -10,6 +11,7 @@ fastsms = function fastsms() {
 
     this.setConfig = function (config) {
         this.config = config; // explicit set method
+        //console.log(config);
         return this;
     },
 
@@ -102,10 +104,16 @@ fastsms = function fastsms() {
                 this.config.messages[_id] = obj;
                 return parseInt(_id);
             } else {
-                var id = parseInt(request('GET', uriCall).body.toString('utf-8'));
+                var resp = request('GET', uriCall),
+                    id   = parseInt(resp.body.toString('utf-8'));
+
+                if (id < 0) {
+                    console.log('ERROR: ' + errorCode.resolve(id));
+                }
             }
 
         } catch (exc) {
+            console.log(exc);
             return 0;
         }
 
