@@ -22,6 +22,7 @@ module.exports = {
     hostname: readFromEnvVars('FAST_SMS_API_HOSTNAME', 'my.fastsms.co.uk'),
     protocol: readFromEnvVars('FAST_SMS_API_PROTOCOL', 'https'),
     path: readFromEnvVars('FAST_SMS_API_PATH', '/api'),
-    token: readFromEnvVars('FAST_SMS_API_TOKEN', 'not-set')
+    token: readFromEnvVars('FAST_SMS_API_TOKEN', 'not-set'),
+    messages: {}
 };
 

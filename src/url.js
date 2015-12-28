@@ -51,9 +51,6 @@ url = function url() {
             }
 
             if (validate.typeOf(getArguments) !== 'Object') {
-                console.log(validate.typeOf(getArguments));
-                console.log('ARGS');
-                console.log(getArguments);
                 throw ('Invalid GET parameters');
             }
 
@@ -65,11 +62,9 @@ url = function url() {
                 '?',
                 this.flattenObject(getArguments, '&')
             ];
-
             return out.join('');
 
         } catch (exc) {
-            console.log(exc);
             return false;
         }
     };

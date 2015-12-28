@@ -10,6 +10,7 @@ fastsms = function fastsms() {
 
     this.setConfig = function (config) {
         this.config = config; // explicit set method
+        return this;
     },
 
     /**
@@ -47,7 +48,7 @@ fastsms = function fastsms() {
             }
 
             if (valid.typeOf(source) !== 'String' || source.length < 1 || source.length > 11) {
-                throw ('Invalid sender');
+                throw ('Invalid sender (over 11 Chars)');
             }
 
             if (valid.typeOf(validity) === 'Undefined') {
@@ -92,8 +93,8 @@ fastsms = function fastsms() {
 
             // Mock only ------------------------------------
 
-            if (this.config.mock = true) {
-                var _id = this.generateId(),
+            if (this.config.mock === true) {
+                var _id = this.generateMockId(),
                     obj = {
                         url: uriCall,
                         payload: payload
@@ -101,22 +102,17 @@ fastsms = function fastsms() {
                 this.config.messages[_id] = obj;
                 return parseInt(_id);
             } else {
-                //console.log('Running live');
-                var id       = 0,
-                    response = request('GET', uriCall);
-                    console.log(response);
+                var id = parseInt(request('GET', uriCall).body.toString('utf-8'));
             }
 
         } catch (exc) {
-
             return 0;
         }
 
         return id;
     },
 
-
-    this.generateId = function () {
+    this.generateMockId = function () {
         var id = Math.abs(parseInt(Math.floor(Math.random() * (1 - 999)) + 1)) + 10000;
         valid.typeOf(id);
         return id;
