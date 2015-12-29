@@ -5,13 +5,13 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/codebloke/node-fastsms.git"
+    "url": "https://github.com/martinswiderski/node-fastsms.git"
   },
   "author": "Martin Swiderski <codebloke@gmail.com> (http://codebloke.wordpress.com/)",
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://bitbucket.org/codebloke/node-fastsms/src"
+      "url": "https://github.com/martinswiderski/node-fastsms/src"
     }
   ],
   "scripts": {
