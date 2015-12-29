@@ -19,8 +19,12 @@ add module to your project's **package.json** file by running
 ```sh
 $ npm install --save node-fastsms
 ```
-then invoke module in your code running:
+example of how to use the code is explained here:
 
+```sh
+cd examples/
+./send-message.js 447777111222
+```
 
 
 
