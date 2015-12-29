@@ -22,11 +22,12 @@ fastsms = function fastsms() {
      * @param string body        Text message
      * @param string source      Sending party name or number
      * @param string validity    Optional - TTL in seconds e.g. 86400 = 24 hours (default 24 hr)
+     * @param bool   check       Optional - status check
      * @param string schedule    Optional - Target timestamp for send the message, format: YYYYMMDDHHMMSS
      *
      * @returns {int} Message ID 0=Error
      */
-    this.sendOne = function (destination, body, source, validity, schedule) {
+    this.sendOne = function (destination, body, source, validity, check, schedule) {
 
         var id = 0;
 
@@ -40,6 +41,10 @@ fastsms = function fastsms() {
             console.log(valid.typeOf(validity));
             console.log(valid.typeOf(schedule));
             */
+
+            if (!check || check !== true) {
+                check = false;
+            }
 
             if (valid.internationalMobile(destination) !== true) {
                 throw ('Invalid mobile number');
@@ -111,7 +116,9 @@ fastsms = function fastsms() {
                     console.log('ERROR: ' + errorCode.resolve(id));
                 } else {
                     console.log('CREDITS LEFT: ' + this.checkCredits());
-                    console.log('STATUS: ' + this.checkMessageStatus(id));
+                    if (check === true) {
+                        console.log('STATUS: ' + this.checkMessageStatus(id));
+                    }
                 }
             }
 
