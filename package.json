@@ -8,10 +8,12 @@
     "url": "https://github.com/martinswiderski/node-fastsms.git"
   },
   "author": "Martin Swiderski <codebloke@gmail.com> (http://codebloke.wordpress.com/)",
-  "licenses": [{
-    "type": "MIT",
-    "url": "https://github.com/martinswiderski/node-fastsms/src"
-  }],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/martinswiderski/node-fastsms/src"
+    }
+  ],
   "scripts": {
     "test": "jasmine-node tests/",
     "jslint": "jslint server.js src/*.js"
@@ -31,6 +33,7 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "jslint": "^0.7.2",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "standard": "^5.4.1"
   }
 }
