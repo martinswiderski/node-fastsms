@@ -26,5 +26,12 @@ cd examples/
 ./send-message.js 447777111222
 ```
 
+make sure you set environment variable FAST_SMS_API_TOKEN by adding 
+
+```sh
+export FAST_SMS_API_TOKEN='your-token-here'
+```
+
+
 
 
