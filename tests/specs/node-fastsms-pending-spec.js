@@ -3,9 +3,6 @@ var nodeFastSms = require('../../index');
 describe("Core tests", function () {
     // implementation not ready yet...
     it("Methods not implemented", function () {
-        expect(nodeFastSms.checkCredits()).toBe("not implemented");
-        expect(nodeFastSms.checkMessageStatus()).toBe("not implemented");
-        expect(nodeFastSms.sendOneMessage()).toBe("not implemented");
         expect(nodeFastSms.reports()).toBe("not implemented");
         expect(nodeFastSms.createUser()).toBe("not implemented");
         expect(nodeFastSms.updateCredits()).toBe("not implemented");

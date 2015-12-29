@@ -180,9 +180,43 @@ fastsms = function fastsms() {
         var id = Math.abs(parseInt(Math.floor(Math.random() * (1 - 999)) + 1)) + 10000;
         //valid.typeOf(id);
         return id;
+    },
+
+    this.reports = function() {
+        return "not implemented";
+    },
+
+    this.createUser = function() {
+        return "not implemented";
+    },
+
+    this.updateCredits = function() {
+        return "not implemented";
+    },
+
+    this.importContactsCsv = function() {
+        return "not implemented";
+    },
+
+    this.deleteAllContacts = function() {
+        return "not implemented";
+    },
+
+    this.deleteAllGroups = function() {
+        return "not implemented";
+    },
+
+    this.emptyGroup = function() {
+        return "not implemented";
+    },
+
+    this.deleteGroup = function() {
+        return "not implemented";
+    },
+
+    this.getBgMessages = function() {
+        return "not implemented";
     };
-
-
 
 };
 
