@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/martinswiderski/node-fastsms.git"
+    "url": "git+https://github.com/martinswiderski/node-fastsms.git"
   },
   "author": "Martin Swiderski <codebloke@gmail.com> (http://codebloke.wordpress.com/)",
   "licenses": [
@@ -36,5 +36,20 @@
     "mocha": "^2.3.4",
     "standard": "^5.4.1",
     "surge": "^0.17.4"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/martinswiderski/node-fastsms/issues"
+  },
+  "homepage": "https://github.com/martinswiderski/node-fastsms#readme",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "keywords": [
+    "sms",
+    "fastsms",
+    "test",
+    "messages"
+  ],
+  "license": "MIT"
 }
