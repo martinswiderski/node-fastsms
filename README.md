@@ -5,6 +5,8 @@
 ### Version
 0.1.0 beta
 
+[![Build Status](https://travis-ci.org/martinswiderski/node-fastsms.svg?branch=master)](https://travis-ci.org/martinswiderski/node-fastsms)
+
 ### Tech
 
 node-fastsms has two dependencies
