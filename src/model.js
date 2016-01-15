@@ -2,10 +2,10 @@
 var configuration = require('./configuration'),
     actions = require('./actions');
 
-model = function model() {
+var model = function model() {
 
     this.Send = {
-        Token: '',
+        Token: configuration.token,
         Action: 'Send',
         DestinationAddress: '',
         SourceAddress: '',
@@ -13,14 +13,16 @@ model = function model() {
     },
 
     this.get = function (name) {
+
         if (actions.isValid(name) !== true) {
             return false;
         }
-        var out = {};
+        var out = {
+            Token: this.Token
+        };
         if (this[name]) {
             out = this[name];
         }
-        out.Token = configuration.token;
         return out;
     };
 };
