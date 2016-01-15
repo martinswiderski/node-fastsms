@@ -4,7 +4,11 @@
  * mobile in format 447777112233
  */
 var fastSms = require(__dirname + "/../index"),
-    sentId  = fastSms.sendOne(process.argv[2], "That's one small step for a man, one giant leap for mankind.\n\nPS. SMS module is fully operational.", 'Martin');
+    sentId  = fastSms.sendOne(
+        process.argv[2],
+        "That's a test message confirming your node-fstsms is working. More: https://www.npmjs.com/package/node-fastsms",
+        'MartinS'
+    );
 
 if (!isNaN(sentId) && sentId > 0) {
     console.log('Message sent. ID: ' + sentId);
