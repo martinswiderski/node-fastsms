@@ -1,4 +1,4 @@
-Last run by [mswiderski] on... Thu Feb  4 20:16:36 GMT 2016
+Last run by [mswiderski] on... Thu Feb  4 20:28:36 GMT 2016
 
 **************************
 * Source                 *
@@ -7,112 +7,11 @@ Last run by [mswiderski] on... Thu Feb  4 20:16:36 GMT 2016
 /home/mswiderski/development/node-fastsms/src/configuration.js
   15:9  error  Unexpected console statement  no-console
 
-/home/mswiderski/development/node-fastsms/src/date-tool.js
-  49:6  error  Missing semicolon  semi
-
-/home/mswiderski/development/node-fastsms/src/error-code.js
-   4:9   error  Strings must use singlequote  quotes
-   4:17  error  Strings must use singlequote  quotes
-   5:9   error  Strings must use singlequote  quotes
-   5:17  error  Strings must use singlequote  quotes
-   6:9   error  Strings must use singlequote  quotes
-   6:17  error  Strings must use singlequote  quotes
-   7:9   error  Strings must use singlequote  quotes
-   7:17  error  Strings must use singlequote  quotes
-   8:9   error  Strings must use singlequote  quotes
-   8:17  error  Strings must use singlequote  quotes
-   9:9   error  Strings must use singlequote  quotes
-   9:17  error  Strings must use singlequote  quotes
-  10:9   error  Strings must use singlequote  quotes
-  10:17  error  Strings must use singlequote  quotes
-  11:9   error  Strings must use singlequote  quotes
-  11:17  error  Strings must use singlequote  quotes
-  12:9   error  Strings must use singlequote  quotes
-  12:17  error  Strings must use singlequote  quotes
-  13:9   error  Strings must use singlequote  quotes
-  13:17  error  Strings must use singlequote  quotes
-  14:9   error  Strings must use singlequote  quotes
-  14:17  error  Strings must use singlequote  quotes
-  15:9   error  Strings must use singlequote  quotes
-  15:17  error  Strings must use singlequote  quotes
-  16:9   error  Strings must use singlequote  quotes
-  16:17  error  Strings must use singlequote  quotes
-  17:9   error  Strings must use singlequote  quotes
-  17:17  error  Strings must use singlequote  quotes
-  18:9   error  Strings must use singlequote  quotes
-  18:17  error  Strings must use singlequote  quotes
-  19:9   error  Strings must use singlequote  quotes
-  19:17  error  Strings must use singlequote  quotes
-  20:9   error  Strings must use singlequote  quotes
-  20:17  error  Strings must use singlequote  quotes
-  21:9   error  Strings must use singlequote  quotes
-  21:17  error  Strings must use singlequote  quotes
-  22:9   error  Strings must use singlequote  quotes
-  22:17  error  Strings must use singlequote  quotes
-  23:9   error  Strings must use singlequote  quotes
-  23:17  error  Strings must use singlequote  quotes
-  24:9   error  Strings must use singlequote  quotes
-  24:17  error  Strings must use singlequote  quotes
-  25:9   error  Strings must use singlequote  quotes
-  25:17  error  Strings must use singlequote  quotes
-  26:9   error  Strings must use singlequote  quotes
-  26:17  error  Strings must use singlequote  quotes
-  27:9   error  Strings must use singlequote  quotes
-  27:17  error  Strings must use singlequote  quotes
-  28:9   error  Strings must use singlequote  quotes
-  28:17  error  Strings must use singlequote  quotes
-  29:9   error  Strings must use singlequote  quotes
-  29:17  error  Strings must use singlequote  quotes
-  30:9   error  Strings must use singlequote  quotes
-  30:17  error  Strings must use singlequote  quotes
-  31:9   error  Strings must use singlequote  quotes
-  31:17  error  Strings must use singlequote  quotes
-  32:9   error  Strings must use singlequote  quotes
-  32:17  error  Strings must use singlequote  quotes
-  33:9   error  Strings must use singlequote  quotes
-  33:17  error  Strings must use singlequote  quotes
-  34:9   error  Strings must use singlequote  quotes
-  34:17  error  Strings must use singlequote  quotes
-  35:9   error  Strings must use singlequote  quotes
-  35:17  error  Strings must use singlequote  quotes
-  36:9   error  Strings must use singlequote  quotes
-  36:17  error  Strings must use singlequote  quotes
-  37:9   error  Strings must use singlequote  quotes
-  37:17  error  Strings must use singlequote  quotes
-  38:9   error  Strings must use singlequote  quotes
-  38:17  error  Strings must use singlequote  quotes
-  39:9   error  Strings must use singlequote  quotes
-  39:17  error  Strings must use singlequote  quotes
-  40:9   error  Strings must use singlequote  quotes
-  40:17  error  Strings must use singlequote  quotes
-  41:9   error  Strings must use singlequote  quotes
-  41:17  error  Strings must use singlequote  quotes
-  42:9   error  Strings must use singlequote  quotes
-  42:17  error  Strings must use singlequote  quotes
-  43:9   error  Strings must use singlequote  quotes
-  43:17  error  Strings must use singlequote  quotes
-  44:9   error  Strings must use singlequote  quotes
-  44:17  error  Strings must use singlequote  quotes
-
 /home/mswiderski/development/node-fastsms/src/fast-sms.js
-    2:5   error  "configuration" is defined but never used  no-unused-vars
-    2:29  error  Strings must use singlequote               quotes
-    3:29  error  Strings must use singlequote               quotes
-    4:29  error  Strings must use singlequote               quotes
-  113:21  error  "id" is already defined                    no-redeclare
-  116:21  error  Unexpected console statement               no-console
-  118:21  error  Unexpected console statement               no-console
-  120:25  error  Unexpected console statement               no-console
-  126:13  error  Unexpected console statement               no-console
-  186:16  error  Strings must use singlequote               quotes
-  190:16  error  Strings must use singlequote               quotes
-  194:16  error  Strings must use singlequote               quotes
-  198:16  error  Strings must use singlequote               quotes
-  202:16  error  Strings must use singlequote               quotes
-  206:16  error  Strings must use singlequote               quotes
-  210:16  error  Strings must use singlequote               quotes
-  214:16  error  Strings must use singlequote               quotes
-  218:16  error  Strings must use singlequote               quotes
+  117:21  error  Unexpected console statement  no-console
+  119:21  error  Unexpected console statement  no-console
+  121:25  error  Unexpected console statement  no-console
+  127:13  error  Unexpected console statement  no-console
 
-✖ 102 problems (102 errors, 0 warnings)
+✖ 5 problems (5 errors, 0 warnings)
 
