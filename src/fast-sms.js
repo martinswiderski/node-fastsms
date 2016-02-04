@@ -1,7 +1,7 @@
 var fastsms,
-    configuration = require("./configuration"),
-    valid         = require("./validate"),
-    url           = require("./url"),
+    //configuration = require('./configuration'),
+    valid         = require('./validate'),
+    url           = require('./url'),
     request       = require('sync-request'),
     errorCode     = require('./error-code');
 
@@ -109,8 +109,9 @@ fastsms = function fastsms() {
                 this.config.messages[_id] = obj;
                 return parseInt(_id);
             } else {
-                var resp = request('GET', uriCall),
-                    id   = parseInt(resp.body.toString('utf-8'));
+                var resp = request('GET', uriCall);
+
+                id   = parseInt(resp.body.toString('utf-8'));
 
                 if (id < 0) {
                     console.log('ERROR: ' + errorCode.resolve(id));
@@ -183,39 +184,39 @@ fastsms = function fastsms() {
     },
 
     this.reports = function() {
-        return "not implemented";
+        return 'not implemented';
     },
 
     this.createUser = function() {
-        return "not implemented";
+        return 'not implemented';
     },
 
     this.updateCredits = function() {
-        return "not implemented";
+        return 'not implemented';
     },
 
     this.importContactsCsv = function() {
-        return "not implemented";
+        return 'not implemented';
     },
 
     this.deleteAllContacts = function() {
-        return "not implemented";
+        return 'not implemented';
     },
 
     this.deleteAllGroups = function() {
-        return "not implemented";
+        return 'not implemented';
     },
 
     this.emptyGroup = function() {
-        return "not implemented";
+        return 'not implemented';
     },
 
     this.deleteGroup = function() {
-        return "not implemented";
+        return 'not implemented';
     },
 
     this.getBgMessages = function() {
-        return "not implemented";
+        return 'not implemented';
     };
 
 };

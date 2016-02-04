@@ -46,7 +46,7 @@ dateTool = function dateTool() {
         var now = moment().unix(),
             trg = this.reformatDateUnix(input);
         return trg > now;
-    }
+    };
 };
 
 module.exports = new dateTool();
