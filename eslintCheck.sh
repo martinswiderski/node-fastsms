@@ -19,11 +19,11 @@ echo "* Source                 *" >> $OUTFILE
 echo "**************************" >> $OUTFILE
 echo ""
 eslint src/*.js >> $OUTFILE
-echo "**************************" >> $OUTFILE
-echo "* Tests                  *" >> $OUTFILE
-echo "**************************" >> $OUTFILE
-echo ""
-eslint tests/specs/*-spec.js >> $OUTFILE
+#echo "**************************" >> $OUTFILE
+#echo "* Tests                  *" >> $OUTFILE
+#echo "**************************" >> $OUTFILE
+#echo ""
+#eslint tests/specs/*-spec.js >> $OUTFILE
 echo "**************************"
 echo "** eslint check results **"
 echo "**************************"
