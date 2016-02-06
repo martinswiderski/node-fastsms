@@ -1,18 +1,19 @@
+process.env['FAST_SMS_API_HOSTNAME'] = 'my.fastsms.co.uk';
+process.env['FAST_SMS_API_PROTOCOL'] = 'https';
+process.env['FAST_SMS_API_PATH'] = '/api';
+process.env['FAST_SMS_API_CLIENT_INSTANCE'] = 'fastsmsApiClient01';
+
 /**
  * Reads from EnvVars with fall-back value
  * @param string key   Key to read value of from environment vars
- * @param string deflt Fall-back value if environment var is not set
  * @returns mixed
  */
-function readFromEnvVars(key, deflt) {
+function readFromEnvVars(key) {
     'use strict';
     if (process.env[key]) {
         return process.env[key];
     } else {
-        if (deflt !== null) {
-            return deflt;
-        }
-        throw ('missing required env var: ' + key);
+        throw new Error('missing required env var: ' + key);
     }
 }
 
@@ -21,7 +22,7 @@ module.exports = {
     hostname: readFromEnvVars('FAST_SMS_API_HOSTNAME', 'my.fastsms.co.uk'),
     protocol: readFromEnvVars('FAST_SMS_API_PROTOCOL', 'https'),
     path: readFromEnvVars('FAST_SMS_API_PATH', '/api'),
-    token: readFromEnvVars('FAST_SMS_API_TOKEN', 'not-set'),
+    token: readFromEnvVars('FAST_SMS_API_TOKEN'),
     instanceId: readFromEnvVars('FAST_SMS_API_CLIENT_INSTANCE', 'fastsmsApiClient01'),
     messages: {}
 };
