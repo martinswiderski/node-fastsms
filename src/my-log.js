@@ -16,7 +16,6 @@ myLog = function myLog(myLogsDir, myLogFileCommon, myLogInstance, l4js) {
     this.logger = 1;
 
     this.log = function () {
-        console.log((typeof this.logger));
         if ((typeof this.logger) === 'number') {
             this.log4js.loadAppender('file');
             this.log4js.addAppender(this.log4js.appenders.file(path.resolve(this.logsDir + '/' + this.logFileCommon)), this.instance);
