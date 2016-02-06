@@ -4,7 +4,7 @@ var fastsms,
     url           = require('./url'),
     request       = require('sync-request'),
     errorCode     = require('./error-code'),
-    myLog         = require(__dirname + '/../../src/my-log');
+    myLog         = require('./my-log');
 
 fastsms = function fastsms() {
 

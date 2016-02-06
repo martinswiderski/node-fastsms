@@ -1,10 +1,3 @@
-var path  = require('path'),
-    myLog = require('./my-log')(
-        path.resolve(__dirname + '/../log')+'/',
-        'common.log',
-        require('log4js')
-    );
-
 /**
  * Reads from EnvVars with fall-back value
  * @param string key   Key to read value of from environment vars
@@ -19,7 +12,6 @@ function readFromEnvVars(key, deflt) {
         if (deflt !== null) {
             return deflt;
         }
-        myLog.log().fatal('Required env var %s is required', key);
         throw ('missing required env var: ' + key);
     }
 }
