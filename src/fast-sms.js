@@ -3,7 +3,8 @@ var fastsms,
     valid         = require('./validate'),
     url           = require('./url'),
     request       = require('sync-request'),
-    errorCode     = require('./error-code');
+    errorCode     = require('./error-code'),
+    myLog         = require(__dirname + '/../../src/my-log');
 
 fastsms = function fastsms() {
 
@@ -32,15 +33,6 @@ fastsms = function fastsms() {
         var id = 0;
 
         try {
-
-            /***
-            console.log('------------------------------------');
-            console.log(valid.internationalMobile(destination));
-            console.log(valid.typeOf(body));
-            console.log(valid.typeOf(source));
-            console.log(valid.typeOf(validity));
-            console.log(valid.typeOf(schedule));
-            */
 
             if (!check || check !== true) {
                 check = false;
@@ -114,17 +106,17 @@ fastsms = function fastsms() {
                 id   = parseInt(resp.body.toString('utf-8'));
 
                 if (id < 0) {
-                    console.log('ERROR: ' + errorCode.resolve(id));
+                    myLog.log().error('Code: %s', errorCode.resolve(id));
                 } else {
-                    console.log('CREDITS LEFT: ' + this.checkCredits());
+                    myLog.log().info('CREDITS LEFT: %s', this.checkCredits());
                     if (check === true) {
-                        console.log('STATUS: ' + this.checkMessageStatus(id));
+                        myLog.log().info('STATUS: %s', this.checkMessageStatus(id));
                     }
                 }
             }
 
         } catch (exc) {
-            console.log(exc);
+            myLog.log().error(exc);
             return 0;
         }
 
