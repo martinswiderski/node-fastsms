@@ -105,7 +105,7 @@ fastsms = function fastsms() {
                 id   = parseInt(resp.body.toString('utf-8'));
 
                 if (id < 0) {
-                    myLog.log().error('Code: %s', errorCode.resolve(id));
+                    myLog.log().error('Code: %s %s', id, errorCode.resolve(id));
                 } else {
                     myLog.log().info('CREDITS LEFT: %s', this.checkCredits());
                     if (check === true) {
