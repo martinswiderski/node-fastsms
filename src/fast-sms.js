@@ -12,7 +12,6 @@ fastsms = function fastsms() {
 
     this.setConfig = function (config) {
         this.config = config; // explicit set method
-        //console.log(config);
         return this;
     },
 
