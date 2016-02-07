@@ -1,7 +1,13 @@
-process.env['FAST_SMS_API_HOSTNAME'] = 'my.fastsms.co.uk';
-process.env['FAST_SMS_API_PROTOCOL'] = 'https';
-process.env['FAST_SMS_API_PATH'] = '/api';
-process.env['FAST_SMS_API_CLIENT_INSTANCE'] = 'fastsmsApiClient01';
+var defaults = {
+    FAST_SMS_API_HOSTNAME: 'my.fastsms.co.uk',
+    FAST_SMS_API_PROTOCOL: 'https',
+    FAST_SMS_API_PATH: '/api',
+    FAST_SMS_API_CLIENT_INSTANCE: 'fastsmsApiClient01'
+};
+
+for (var k in defaults) {
+    process.env[k] = defaults[k];
+}
 
 /**
  * Reads from EnvVars with fall-back value
