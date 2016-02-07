@@ -100,26 +100,32 @@ fastsms = function fastsms() {
                 this.config.messages[_id] = obj;
                 return parseInt(_id);
             } else {
-                var resp = request('GET', uriCall);
 
-                id   = parseInt(resp.body.toString('utf-8'));
+                // @todo: All refactoring for #5 needs to happen within next 20+ lines and that's the end of it... then only
+                // @todo: change Mock for unit tests
+
+                var resp = request('GET', uriCall); // @todo: read HTTP Code here, too
+
+                id   = parseInt(resp.body.toString('utf-8')); // we take this or response HTTP code to define ourcome
 
                 if (id < 0) {
-                    myLog.log().error('Code: %s %s', id, errorCode.resolve(id));
+                    myLog.log().error('Code: %s %s', id, errorCode.resolve(id)); // @todo: consider throw new Error(msg);
                 } else {
-                    myLog.log().info('CREDITS LEFT: %s', this.checkCredits());
+                    myLog.log().info('CREDITS LEFT: %s', this.checkCredits()); // @todo: consider delegating the check for credits to the envelope object
                     if (check === true) {
-                        myLog.log().info('STATUS: %s', this.checkMessageStatus(id));
+                        myLog.log().info('STATUS: %s', this.checkMessageStatus(id)); // @todo: Same story here... maybe not the right place
                     }
                 }
             }
+            // @todo: so you would return JSON from here
 
         } catch (exc) {
+            // @todo: or JSON from here
             myLog.log().error(exc);
             return 0;
         }
-
-        return id;
+        return id; // @todo: This message ID must land in envelope, too w. UUID, but that is a separate concern
+                   //        So needs moving up...
     },
 
     this.checkMessageStatus = function (id) {
