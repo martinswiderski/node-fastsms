@@ -1,17 +1,5 @@
-Last run by [mswiderski] on... Thu Feb  4 20:28:36 GMT 2016
+Last run by [mswiderski] on... Sat Feb  6 23:35:23 GMT 2016
 
 **************************
 * Source                 *
 **************************
-
-/home/mswiderski/development/node-fastsms/src/configuration.js
-  15:9  error  Unexpected console statement  no-console
-
-/home/mswiderski/development/node-fastsms/src/fast-sms.js
-  117:21  error  Unexpected console statement  no-console
-  119:21  error  Unexpected console statement  no-console
-  121:25  error  Unexpected console statement  no-console
-  127:13  error  Unexpected console statement  no-console
-
-✖ 5 problems (5 errors, 0 warnings)
-

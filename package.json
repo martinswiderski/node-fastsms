@@ -15,7 +15,7 @@
     }
   ],
   "scripts": {
-    "test": "jasmine-node tests/",
+    "test": "export FAST_SMS_API_UNIT_TEST='1'; jasmine-node tests/; echo '' > log/unit-test.log",
     "jslint": "jslint server.js src/*.js"
   },
   "engines": {
@@ -24,11 +24,13 @@
   "dependencies": {
     "jasmine-node": "^1.14.5",
     "lodash": "^2.4.1",
+    "log4js": "^0.6.31",
     "moment": "^2.10.6",
     "q": "^1.1.2",
     "querystring": "^0.2.0",
     "sync-request": "^2.1.0",
-    "system": "0.1.0"
+    "system": "0.1.0",
+    "uuid": "^2.0.1"
   },
   "devDependencies": {
     "chai": "^3.4.1",
