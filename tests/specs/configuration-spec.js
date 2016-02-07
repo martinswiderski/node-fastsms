@@ -1,7 +1,8 @@
-process.env['FAST_SMS_API_HOSTNAME'] = 'A';
-process.env['FAST_SMS_API_PROTOCOL'] = 'B';
-process.env['FAST_SMS_API_PATH']     = 'C';
-process.env['FAST_SMS_API_TOKEN']    = 'D';
+process.env['FAST_SMS_API_HOSTNAME']        = 'A';
+process.env['FAST_SMS_API_PROTOCOL']        = 'B';
+process.env['FAST_SMS_API_PATH']            = 'C';
+process.env['FAST_SMS_API_TOKEN']           = 'D';
+process.env['FAST_SMS_API_CLIENT_INSTANCE'] = 'E';
 
 var configuration = require(__dirname + "/../../src/configuration");
 
