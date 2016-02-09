@@ -38,6 +38,6 @@ describe("Taking HTTP response code and possible API Err Code", function () {
         expect(goodCall.http.code).toBe(200);
         expect(goodCall.http.status).toBe('HTTP Status: OK');
     });
-    
+
 });
 
