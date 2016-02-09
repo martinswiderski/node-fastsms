@@ -15,7 +15,7 @@
     }
   ],
   "scripts": {
-    "test": "export FAST_SMS_API_UNIT_TEST='1'; jasmine-node tests/; echo '' > log/unit-test.log",
+    "test": "jasmine-node tests/; echo '' > log/unit-test.log",
     "jslint": "jslint server.js src/*.js"
   },
   "engines": {

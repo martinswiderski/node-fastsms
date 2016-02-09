@@ -28,11 +28,11 @@ function readFromEnvVars(key) {
 
 module.exports = {
     mock: false,
-    hostname: readFromEnvVars('FAST_SMS_API_HOSTNAME', 'my.fastsms.co.uk'),
-    protocol: readFromEnvVars('FAST_SMS_API_PROTOCOL', 'https'),
-    path: readFromEnvVars('FAST_SMS_API_PATH', '/api'),
+    hostname: readFromEnvVars('FAST_SMS_API_HOSTNAME'),
+    protocol: readFromEnvVars('FAST_SMS_API_PROTOCOL'),
+    path: readFromEnvVars('FAST_SMS_API_PATH'),
     token: readFromEnvVars('FAST_SMS_API_TOKEN'),
-    instanceId: readFromEnvVars('FAST_SMS_API_CLIENT_INSTANCE', 'fastsmsApiClient01'),
+    instanceId: readFromEnvVars('FAST_SMS_API_CLIENT_INSTANCE'),
     messages: {}
 };
 
