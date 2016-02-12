@@ -1,10 +1,9 @@
 var fastsms,
-    //configuration = require('./configuration'),
-    valid         = require('./validate'),
-    url           = require('./url'),
-    request       = require('sync-request'),
-    errorCode     = require('./error-code'),
-    myLog         = require('./my-log');
+    valid    = require('./validate'),
+    url      = require('./url'),
+    request  = require('sync-request'),
+    opCode   = require('./op-code'),
+    myLog    = require('./my-log');
 
 fastsms = function fastsms() {
 
@@ -104,12 +103,18 @@ fastsms = function fastsms() {
                 // @todo: All refactoring for #5 needs to happen within next 20+ lines and that's the end of it... then only
                 // @todo: change Mock for unit tests
 
-                var resp = request('GET', uriCall); // @todo: read HTTP Code here, too
+                var responseStr = resp.body.toString('utf-8'),
+                    apiCode     = ;
 
-                id   = parseInt(resp.body.toString('utf-8')); // we take this or response HTTP code to define ourcome
+                apiCode = (0 < apiCode) ? apiCode : false;
+
+
+                resp = request('GET', uriCall),
+                    details = opCode.response(resp.statusCode, apiCode, this.checkCredits()); // @todo: read HTTP Code here, too
+
 
                 if (id < 0) {
-                    myLog.log().error('Code: %s %s', id, errorCode.resolve(id)); // @todo: consider throw new Error(msg);
+                    myLog.log().error('Code: %s %s', id, opCode.resolve(id)); // @todo: consider throw new Error(msg);
                 } else {
                     myLog.log().info('CREDITS LEFT: %s', this.checkCredits()); // @todo: consider delegating the check for credits to the envelope object
                     if (check === true) {
@@ -126,6 +131,23 @@ fastsms = function fastsms() {
         }
         return id; // @todo: This message ID must land in envelope, too w. UUID, but that is a separate concern
                    //        So needs moving up...
+    },
+
+    /**
+     * Checks for not found
+     * @param string Body string returned by HTTPs) request
+     * @return {bool}
+     */
+    this.checkNotFoundMessagePresentInBody = function (bodyString) {
+        var check;
+        try {
+            var obj = JSON.parse(bodyString);
+        } catch (err) {
+            console.log(err);
+        }
+        check = false;
+        check = (bodyString !== bodyString.replace('Page not found', 'ABC-XYZ'));
+        return check;
     },
 
     this.checkMessageStatus = function (id) {
