@@ -1,5 +1,11 @@
-Last run by [mswiderski] on... Sat Feb  6 23:35:23 GMT 2016
+Last run by [mswiderski] on... Sat Feb 13 23:54:53 GMT 2016
 
 **************************
 * Source                 *
 **************************
+
+/home/mswiderski/development/node-fastsms/src/fast-sms.js
+  107:36  error  Parsing error: Unexpected token ;
+
+✖ 1 problem (1 error, 0 warnings)
+
