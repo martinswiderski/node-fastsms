@@ -25,11 +25,13 @@
     "jasmine-node": "^1.14.5",
     "lodash": "^2.4.1",
     "log4js": "^0.6.31",
+    "md5": "^2.0.0",
     "moment": "^2.10.6",
     "q": "^1.1.2",
     "querystring": "^0.2.0",
     "sync-request": "^2.1.0",
     "system": "0.1.0",
+    "unix-time": "^1.0.1",
     "uuid": "^2.0.1"
   },
   "devDependencies": {
