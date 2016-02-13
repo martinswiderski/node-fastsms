@@ -9,7 +9,7 @@ process.env['FAST_SMS_API_CLIENT_INSTANCE'] = 'E';
 var response = require(__dirname + "/../../src/response");
 
 describe("Reads package version", function () {
-    it("from package.json", function () {
-        expect(response.resolveModuleVersion()+'' === '').toBe('0.1.32');
+    it("from package.json file", function () {
+        expect(response.resolveModuleVersion()+'' === '0.1.32').toBe(true);
     });
 });
