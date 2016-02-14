@@ -87,8 +87,8 @@ response = function response() {
         response.message.id             = (apiReturned < 0) ? false : apiReturned;
         response.credits                = (checkCredits === true) ? checkCreditsFn() : false;
 
-        var apiDetails  = (opCode.apiError[apiReturned]) ? 'API Error: ' + this.apiError[apiReturned] : false,
-            httpDetails = (opCode.httpCode[httpCode]) ? 'HTTP Status: ' + this.httpCode[httpCode] : false;
+        var apiDetails  = (false === apiReturned) ? 'API Error: ' + opCode.resolve(apiReturned, 'api') : false,
+            httpDetails = (false === httpCode) ? 'HTTP Status: ' + opCode.resolve(httpCode, 'http') : false;
 
         response.http.code   = httpCode;
         response.http.status = httpDetails;
