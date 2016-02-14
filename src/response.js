@@ -13,6 +13,7 @@ response = function response() {
      */
     this.envelope = {
         version: false,
+        operation: '',
         error: {
             status: false,
             details: []
@@ -60,6 +61,7 @@ response = function response() {
 
     /**
      * Resolves response details
+     * @param string    opType        Operation type, i.e. 'Send'
      * @param int|mixed apiReturned   API Code (negative=> error, otherwise=> messageId)
      * @param int|mixed httpCode      HTTP Code from HTTP REST Client
      * @param string    messageMd5    MD5 of the message sent
@@ -69,12 +71,13 @@ response = function response() {
      * @param function checkCreditsFn If above is true called to fetch credits-left value
      * @returns {}
      */
-    this.render = function (apiReturned, httpCode, messageMd5, messageLength, execTime, checkCredits, checkCreditsFn) {
+    this.render = function (opType, apiReturned, httpCode, messageMd5, messageLength, execTime, checkCredits, checkCreditsFn) {
 
         var date        = new Date(),
             response    = JSON.parse(JSON.stringify(this.envelope));
 
-        response.version = this.resolveModuleVersion();
+        response.version   = this.resolveModuleVersion();
+        response.operation = opType;
 
         checkCredits = (false === checkCredits || true === checkCredits) ? checkCredits : false;
 
