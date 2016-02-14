@@ -92,11 +92,8 @@ response = function response() {
         response.message.id             = (apiReturned < 0) ? 0 : apiReturned; // number
         response.credits                = (checkCredits === true && (typeof checkCreditsFn) === 'function') ? checkCreditsFn() : false;
 
-        var apiDetails  = ((typeof apiReturned) === 'number') ? 'API Error: ' + opCode.resolve(apiReturned, 'api') : false,
-            httpDetails = ((typeof httpCode) === 'number') ? 'HTTP Status: ' + opCode.resolve(httpCode, 'http') : false;
-
-        console.log('API: ', apiReturned, apiDetails);
-        console.log('HTTP: ', httpCode, httpDetails);
+        var apiDetails  = opCode.resolve(apiReturned, 'api'),
+            httpDetails = opCode.resolve(httpCode, 'http');
 
         response.http.code   = httpCode;
         response.http.status = httpDetails;
