@@ -85,7 +85,7 @@ response = function response() {
         response.message.unix           = 0;
         response.message.exec           = this.integerOrFalse(execTime);
         response.message.id             = (apiReturned < 0) ? false : apiReturned;
-        response.credits                = (checkCredits === true) ? checkCreditsFn() : false;
+        response.credits                = (checkCredits === true && (typeof checkCreditsFn) === 'function') ? checkCreditsFn() : false;
 
         var apiDetails  = (false === apiReturned) ? 'API Error: ' + opCode.resolve(apiReturned, 'api') : false,
             httpDetails = (false === httpCode) ? 'HTTP Status: ' + opCode.resolve(httpCode, 'http') : false;
