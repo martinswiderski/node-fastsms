@@ -1,4 +1,6 @@
 var response,
+    unixTime      = require('unix-time'),
+    uuid          = require('uuid'),
     fs            = require('fs'),
     configuration = require('./configuration'),
     opCode        = require('./op-code');
@@ -17,6 +19,7 @@ response = function response() {
         },
         message: {
             id: 0,
+            uuid: '',
             content: {
                 md5: '',
                 length: 0
@@ -68,7 +71,8 @@ response = function response() {
      */
     this.render = function (apiReturned, httpCode, messageMd5, messageLength, execTime, checkCredits, checkCreditsFn) {
 
-        var response    = JSON.parse(JSON.stringify(this.envelope));
+        var date        = new Date(),
+            response    = JSON.parse(JSON.stringify(this.envelope));
 
         response.version = this.resolveModuleVersion();
 
@@ -79,21 +83,25 @@ response = function response() {
         apiReturned = (false === apiReturned) ? -1 : apiReturned;
         httpCode    = (false === httpCode) ? 0 : httpCode;
 
-        response.message.content.md5    = messageMd5;
+        response.message.content.md5    = messageMd5;                          // 32 chars
         response.message.content.length = messageLength;
-        response.message.timestamp      = '';
-        response.message.unix           = 0;
-        response.message.exec           = this.integerOrFalse(execTime);
-        response.message.id             = (apiReturned < 0) ? false : apiReturned;
+        response.message.timestamp      = date;
+        response.message.unix           = unixTime(date);                // unit-timestamp
+        response.message.exec           = this.integerOrFalse(execTime);       // number
+        response.message.uuid           = uuid.v1();                           // 36 chars
+        response.message.id             = (apiReturned < 0) ? 0 : apiReturned; // number
         response.credits                = (checkCredits === true && (typeof checkCreditsFn) === 'function') ? checkCreditsFn() : false;
 
-        var apiDetails  = (false === apiReturned) ? 'API Error: ' + opCode.resolve(apiReturned, 'api') : false,
-            httpDetails = (false === httpCode) ? 'HTTP Status: ' + opCode.resolve(httpCode, 'http') : false;
+        var apiDetails  = ((typeof apiReturned) === 'number') ? 'API Error: ' + opCode.resolve(apiReturned, 'api') : false,
+            httpDetails = ((typeof httpCode) === 'number') ? 'HTTP Status: ' + opCode.resolve(httpCode, 'http') : false;
+
+        console.log('API: ', apiReturned, apiDetails);
+        console.log('HTTP: ', httpCode, httpDetails);
 
         response.http.code   = httpCode;
         response.http.status = httpDetails;
         response.api.code    = (apiReturned>0) ? false : apiReturned;
-        response.api.status  = (response.api.code !== false) ? apiDetails : '';
+        response.api.status  = apiDetails;
 
         if (parseInt(response.http.code) > 299 || parseInt(response.http.code) < 200) {
             response.error.details.push({
