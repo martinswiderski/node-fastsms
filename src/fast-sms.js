@@ -65,9 +65,10 @@ fastsms = function fastsms() {
 
             // Payload for sending message ------------------------------
 
-            var payload = {
+            var opType  = 'Send',
+                payload = {
                 Token: this.config.token,
-                Action: 'Send',
+                Action: opType,
                 DestinationAddress: destination,
                 SourceAddress: source,
                 Body: body
