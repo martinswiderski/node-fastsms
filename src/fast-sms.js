@@ -104,7 +104,7 @@ fastsms = function fastsms() {
                 // @todo: change Mock for unit tests
 
                 var responseStr = resp.body.toString('utf-8'),
-                    apiCode     = ;
+                    apiCode     = 0;
 
                 apiCode = (0 < apiCode) ? apiCode : false;
 
