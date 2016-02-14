@@ -72,7 +72,7 @@ response = function response() {
 
         response.version = this.resolveModuleVersion();
 
-        checkCredits = (!checkCredits || false === checkCredits || true === checkCredits) ? false : checkCredits;
+        checkCredits = (false === checkCredits || true === checkCredits) ? checkCredits : false;
 
         apiReturned = this.integerOrFalse(apiReturned),
         httpCode    = this.integerOrFalse(httpCode);
