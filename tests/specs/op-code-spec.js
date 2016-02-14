@@ -1,43 +1,23 @@
 var opCode = require(__dirname + "/../../src/op-code");
 
-describe("Taking HTTP response code and possible API Err Code", function () {
+describe("Response codes can be resolved", function () {
 
-    it("checks if cast-able to integer", function () {
-        expect(opCode.integerOrFalse('')).toBe(false);
-        expect(opCode.integerOrFalse('ABC')).toBe(false);
-        expect(opCode.integerOrFalse(false)).toBe(false);
-        expect(opCode.integerOrFalse(true)).toBe(false);
-        expect(opCode.integerOrFalse(null)).toBe(false);
-
-        expect(opCode.integerOrFalse(1234.45)).toBe(1234);
-        expect(opCode.integerOrFalse('1234.45')).toBe(1234);
-        expect(opCode.integerOrFalse('234')).toBe(234);
-        expect(opCode.integerOrFalse(123456)).toBe(123456);
+    it("Unspecified type returns FALSE", function () {
+        expect(opCode.resolve(200, 'doesnotexist')).toBe(false);
     });
 
-    var invalidUser = opCode.resolve("200", "-509");
-    it("invalid credentials are picked up", function () {
-        expect(invalidUser.api.code).toBe(-509);
-        expect(invalidUser.api.status).toBe('API Error: Unknown/Invalid User');
-        expect(invalidUser.http.code).toBe(200);
-        expect(invalidUser.http.status).toBe('HTTP Status: OK');
+    it("HTTP codes if exist or are not defined", function () {
+        expect(opCode.resolve(200, 'http')).toBe('OK');
+        expect(opCode.resolve('404', 'http')).toBe('Not Found');
+        expect(opCode.resolve(false, 'http')).toBe('Not defined');
+        expect(opCode.resolve('booo', 'http')).toBe('Not defined');
     });
 
-    var noHttpCodeNoApiError = opCode.resolve(null, null);
-    it("picks up no valid HTTP code and no Err API responses (ones does not make much sense)", function () {
-        expect(noHttpCodeNoApiError.api.code).toBe(-1);
-        expect(noHttpCodeNoApiError.api.status).toBe('API Error: Not defined');
-        expect(noHttpCodeNoApiError.http.code).toBe(0);
-        expect(noHttpCodeNoApiError.http.status).toBe('HTTP Status: Not defined');
+    it("API codes if exist or are not defined", function () {
+        expect(opCode.resolve('-509', 'api')).toBe('Unknown/Invalid User');
+        expect(opCode.resolve('-300', 'api')).toBe('General Database Error');
+        expect(opCode.resolve(false, 'api')).toBe('Not defined');
+        expect(opCode.resolve('booo', 'api')).toBe('Not defined');
     });
-
-    var goodCall = opCode.resolve("200", "");
-    it("good call has no errors", function () {
-        expect(goodCall.api.code).toBe(-1);
-        expect(goodCall.api.status).toBe('API Error: Not defined');
-        expect(goodCall.http.code).toBe(200);
-        expect(goodCall.http.status).toBe('HTTP Status: OK');
-    });
-
 });
 

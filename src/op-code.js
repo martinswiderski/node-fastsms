@@ -4,7 +4,7 @@ var opCode = function opCode() {
      * These are HTTP Codes
      * in @key {int}: @value {string}
      */
-    this.httpCode = {
+    this.http = {
         '100': 'Continue',
         '101': 'Switching Protocols',
         '102': 'Processing (WebDAV; RFC 2518)',
@@ -93,7 +93,7 @@ var opCode = function opCode() {
      * as per FastSMS definition
      * in @key {int}: @value {string}
      */
-    this.apiError = {
+    this.api = {
         '-100': 'Not Enough Credits',
         '-101': 'Invalid CreditID',
         '-200': 'Invalid Contact',
@@ -140,38 +140,22 @@ var opCode = function opCode() {
 
     /**
      * Resolves codes and returns envelope
-     * @param {int} httpCode HTTP code
-     * @param {int} apiCode  API code
-     * @return {object}
+     * @param {int|mixed} code Code to resolve
+     * @param {string} 'http'|'api'
+     * @return {bool|string}
      */
-    this.resolve = function (httpCode, apiCode) {
+    this.resolve = function (code, type) {
 
-        apiCode  = (this.integerOrFalse(apiCode) === false) ? -1 : parseInt(apiCode);
-        httpCode = (this.integerOrFalse(httpCode) === false) ? 0 : parseInt(httpCode);
+        if (!this[type]) {
+            return false;
+        }
 
-        var apiDetails  = (this.apiError[apiCode]) ? 'API Error: ' + this.apiError[apiCode] : false,
-            httpDetails = (this.httpCode[httpCode]) ? 'HTTP Status: ' + this.httpCode[httpCode] : false,
-            response    = {
-                api: {
-                    code: (false === apiDetails) ? false : apiCode,
-                    status: apiDetails
-                },
-                http: {
-                    code: httpCode,
-                    status: httpDetails
-                }
-            };
-        return response;
-    },
+        code = ('' + parseInt(code) === 'NaN') ? 0 : parseInt(code);
+        if (type === 'api' && code === 0) {
+            code = '-1';
+        }
 
-    /**
-     * Checks string and if it's possible to cast type to INT then it returns integer
-     * otherwise it returns false
-     * @param string str String to examine
-     * @return {bool|int}
-     */
-    this.integerOrFalse = function (str) {
-        return ('' + parseInt(str) === 'NaN') ? false : parseInt(str);
+        return (!this[type][code]) ? false : this[type][code];
     };
 };
 
