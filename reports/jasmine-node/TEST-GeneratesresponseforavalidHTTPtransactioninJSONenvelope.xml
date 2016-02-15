@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Generates response for a valid HTTP transaction in JSON envelope" errors="0" tests="2" failures="0" time="0" timestamp="2016-02-15T18:44:04">
+  <testcase classname="Generates response for a valid HTTP transaction in JSON envelope" name="Message is always given unique UID and numeric ID or zero is allocated" time="0"></testcase>
+  <testcase classname="Generates response for a valid HTTP transaction in JSON envelope" name="HTTP Status is 200, API error is empty &amp; error status is FALSE" time="0"></testcase>
+</testsuite>
+</testsuites>

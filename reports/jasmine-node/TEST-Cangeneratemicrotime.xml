@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Can generate microtime" errors="0" tests="3" failures="0" time="0" timestamp="2016-02-15T18:44:04">
+  <testcase classname="Can generate microtime" name="by default as INT" time="0"></testcase>
+  <testcase classname="Can generate microtime" name="by default as INT" time="0"></testcase>
+  <testcase classname="Can generate microtime" name="as FLOAT" time="0"></testcase>
+</testsuite>
+</testsuites>

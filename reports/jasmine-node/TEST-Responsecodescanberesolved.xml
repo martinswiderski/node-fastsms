@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Response codes can be resolved" errors="0" tests="3" failures="0" time="0" timestamp="2016-02-15T18:44:04">
+  <testcase classname="Response codes can be resolved" name="Unspecified type returns FALSE" time="0"></testcase>
+  <testcase classname="Response codes can be resolved" name="HTTP codes if exist or are not defined" time="0"></testcase>
+  <testcase classname="Response codes can be resolved" name="API codes if exist or are not defined" time="0"></testcase>
+</testsuite>
+</testsuites>

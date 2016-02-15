@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Core tests" errors="0" tests="1" failures="0" time="0.001" timestamp="2016-02-15T18:44:04">
+  <testcase classname="Core tests" name="Methods not implemented" time="0.001"></testcase>
+</testsuite>
+</testsuites>

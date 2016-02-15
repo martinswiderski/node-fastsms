@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Can calculate execution time" errors="0" tests="1" failures="0" time="0" timestamp="2016-02-15T18:44:04">
+  <testcase classname="Can calculate execution time" name="Exec expected to be more than 10 ms" time="0"></testcase>
+</testsuite>
+</testsuites>

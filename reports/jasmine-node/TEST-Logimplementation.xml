@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Log implementation" errors="0" tests="4" failures="0" time="0.001" timestamp="2016-02-15T18:44:04">
+  <testcase classname="Log implementation" name="Has a common log file" time="0.001"></testcase>
+  <testcase classname="Log implementation" name="Common log file is writable" time="0"></testcase>
+  <testcase classname="Log implementation" name="Instance (premise) ID is declared" time="0"></testcase>
+  <testcase classname="Log implementation" name="It does write to log file" time="0"></testcase>
+</testsuite>
+</testsuites>
