@@ -15,8 +15,9 @@
     }
   ],
   "scripts": {
-    "test": "jasmine-node tests/; echo '' > log/unit-test.log",
-    "jslint": "jslint server.js src/*.js"
+    "test": "./shell/runAllJasmine.sh",
+    "jslint": "jslint server.js src/*.js",
+    "eslint": "./shell/eslintCheck.sh"
   },
   "engines": {
     "node": "0.10.x"
