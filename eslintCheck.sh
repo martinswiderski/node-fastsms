@@ -14,18 +14,18 @@ touch $OUTFILE
 # Building results
 echo "Last run by [$USER] on... $DATE" >> $OUTFILE
 echo "" >> $OUTFILE
-echo "**************************" >> $OUTFILE
-echo "* Source                 *" >> $OUTFILE
-echo "**************************" >> $OUTFILE
+echo ".-------------------------------------------------." >> $OUTFILE
+echo "| Source                                          |" >> $OUTFILE
+echo "'-------------------------------------------------'" >> $OUTFILE
 echo ""
 eslint src/*.js >> $OUTFILE
-#echo "**************************" >> $OUTFILE
-#echo "* Tests                  *" >> $OUTFILE
-#echo "**************************" >> $OUTFILE
+#echo ".-------------------------------------------------." >> $OUTFILE
+#echo "| Tests                                           |" >> $OUTFILE
+#echo "'-------------------------------------------------'" >> $OUTFILE
 #echo ""
 #eslint tests/specs/*-spec.js >> $OUTFILE
-echo "**************************"
-echo "** eslint check results **"
-echo "**************************"
+echo ".-------------------------------------------------."
+echo "| eslint check results                            |"
+echo "'-------------------------------------------------'"
 echo ""
 cat $OUTFILE

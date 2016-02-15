@@ -1,8 +1,8 @@
-Last run by [mswiderski] on... Mon Feb 15 07:59:49 GMT 2016
+Last run by [mswiderski] on... Mon Feb 15 08:36:51 GMT 2016
 
-**************************
-* Source                 *
-**************************
+.-------------------------------------------------.
+| Source                                          |
+'-------------------------------------------------'
 
 /home/mswiderski/development/node-fastsms/src/fast-sms.js
   107:21  error  "responseStr" is defined but never used  no-unused-vars
