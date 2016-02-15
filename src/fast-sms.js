@@ -37,15 +37,15 @@ fastsms = function fastsms() {
             }
 
             if (valid.internationalMobile(destination) !== true) {
-                throw ('Invalid mobile number');
+                throw new Error('Invalid mobile number');
             }
 
             if (valid.typeOf(body) !== 'String') {
-                throw ('Invalid message body');
+                throw new Error('Invalid message body');
             }
 
             if (valid.typeOf(source) !== 'String' || source.length < 1 || source.length > 11) {
-                throw ('Invalid sender (over 11 Chars)');
+                throw new Error('Invalid sender (over 11 Chars)');
             }
 
             if (valid.typeOf(validity) === 'Undefined') {
@@ -53,13 +53,13 @@ fastsms = function fastsms() {
             } else {
                 validity = parseInt(validity);
                 if (validity < 3600) {
-                    throw ('Validity period incorrect');
+                    throw new Error('Validity period incorrect');
                 }
             }
 
             if (valid.typeOf(schedule) !== 'Undefined') {
                 if (valid.scheduledDate(schedule) === false) {
-                    throw ('Scheduled date incorrect');
+                    throw new Error('Scheduled date incorrect');
                 }
             }
 
@@ -67,12 +67,12 @@ fastsms = function fastsms() {
 
             var opType  = 'Send',
                 payload = {
-                Token: this.config.token,
-                Action: opType,
-                DestinationAddress: destination,
-                SourceAddress: source,
-                Body: body
-            };
+                    Token: this.config.token,
+                    Action: opType,
+                    DestinationAddress: destination,
+                    SourceAddress: source,
+                    Body: body
+                };
 
             if (valid.typeOf(validity) !== 'Undefined') {
                 payload['ValidityPeriod'] = validity;
@@ -134,23 +134,6 @@ fastsms = function fastsms() {
                    //        So needs moving up...
     },
 
-    /**
-     * Checks for not found
-     * @param string Body string returned by HTTPs) request
-     * @return {bool}
-     */
-    this.checkNotFoundMessagePresentInBody = function (bodyString) {
-        var check;
-        try {
-            var obj = JSON.parse(bodyString);
-        } catch (err) {
-            console.log(err);
-        }
-        check = false;
-        check = (bodyString !== bodyString.replace('Page not found', 'ABC-XYZ'));
-        return check;
-    },
-
     this.checkMessageStatus = function (id) {
         if (this.config.mock === false) {
             var payload = {
@@ -204,39 +187,39 @@ fastsms = function fastsms() {
     },
 
     this.reports = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.createUser = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.updateCredits = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.importContactsCsv = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.deleteAllContacts = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.deleteAllGroups = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.emptyGroup = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.deleteGroup = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.getBgMessages = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     };
 
 };
