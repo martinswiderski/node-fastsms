@@ -1,11 +1,15 @@
-Last run by [mswiderski] on... Sat Feb 13 23:54:53 GMT 2016
+Last run by [mswiderski] on... Mon Feb 15 07:59:49 GMT 2016
 
 **************************
 * Source                 *
 **************************
 
 /home/mswiderski/development/node-fastsms/src/fast-sms.js
-  107:36  error  Parsing error: Unexpected token ;
+  107:21  error  "responseStr" is defined but never used  no-unused-vars
+  107:35  error  "resp" is not defined                    no-undef
+  113:17  error  "resp" is not defined                    no-undef
+  114:21  error  "details" is not defined                 no-undef
+  114:47  error  "resp" is not defined                    no-undef
 
-✖ 1 problem (1 error, 0 warnings)
+✖ 5 problems (5 errors, 0 warnings)
 
