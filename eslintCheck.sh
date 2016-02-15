@@ -12,7 +12,8 @@ fi
 echo "Creating $OUTFILE anew..."
 touch $OUTFILE
 # Building results
-echo "Last run by [$USER] on... $DATE" >> $OUTFILE
+echo "Last run by user [$USER] " >> $OUTFILE
+echo "  on $DATE" >> $OUTFILE
 echo "" >> $OUTFILE
 echo ".-------------------------------------------------." >> $OUTFILE
 echo "| Source                                          |" >> $OUTFILE
