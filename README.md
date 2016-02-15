@@ -10,13 +10,6 @@
 
 [![Build Status](https://travis-ci.org/martinswiderski/node-fastsms.svg?branch=master)](https://travis-ci.org/martinswiderski/node-fastsms)
 
-### Tech
-
-node-fastsms has two dependencies
-
-* [sync-request](https://www.npmjs.com/package/sync-request) - MIT licensed REST client
-* [querystring](https://github.com/Gozala/querystring) - MIT licensed string formatter
-
 ### Installation
 
 add module to your project's **package.json** file by running
