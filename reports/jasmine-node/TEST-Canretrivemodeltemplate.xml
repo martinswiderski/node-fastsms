@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuites>
-<testsuite name="Can retrive model template" errors="0" tests="2" failures="0" time="0" timestamp="2016-02-16T16:18:00">
-  <testcase classname="Can retrive model template" name="for not allowed returns FALSE" time="0"></testcase>
-  <testcase classname="Can retrive model template" name="for existing ones returns object with auto-opulated token" time="0"></testcase>
-</testsuite>
-</testsuites>

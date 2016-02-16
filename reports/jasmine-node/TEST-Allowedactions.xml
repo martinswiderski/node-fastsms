@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuites>
-<testsuite name="Allowed actions" errors="0" tests="1" failures="0" time="0.004" timestamp="2016-02-16T16:18:00">
-  <testcase classname="Allowed actions" name="Can be tested for validity" time="0.003"></testcase>
-</testsuite>
-</testsuites>

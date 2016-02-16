@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuites>
-<testsuite name="Can transform between formats" errors="0" tests="3" failures="0" time="0.008" timestamp="2016-02-16T16:18:00">
-  <testcase classname="Can transform between formats" name="Compact to ISO" time="0.001"></testcase>
-  <testcase classname="Can transform between formats" name="Compact to UNIX" time="0.006"></testcase>
-  <testcase classname="Can transform between formats" name="Date is in the future" time="0.001"></testcase>
-</testsuite>
-</testsuites>
