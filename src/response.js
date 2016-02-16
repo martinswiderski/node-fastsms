@@ -24,6 +24,8 @@ response = function response() {
             id: 0,
             uuid: '',
             content: {
+                source: '',
+                target: '',
                 md5: '',
                 length: 0
             },
