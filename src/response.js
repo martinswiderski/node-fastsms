@@ -2,6 +2,7 @@ var response,
     unixTime      = require('unix-time'),
     uuid          = require('uuid'),
     fs            = require('fs'),
+    md5           = require('md5'),
     configuration = require('./configuration'),
     opCode        = require('./op-code');
 
@@ -42,7 +43,7 @@ response = function response() {
             hostname: configuration.hostname,
             protocol: configuration.protocol,
             path: configuration.path,
-            token: 'Check your FAST_SMS_API_TOKEN',
+            token: md5(configuration.token),
             instanceId: configuration.instanceId
         },
         persistence: {

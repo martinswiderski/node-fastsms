@@ -33,7 +33,7 @@ describe("Generates response for failed HTTP transaction in JSON envelope", func
         expect(respBlank.config.hostname === 'A').toBe(true);
         expect(respBlank.config.protocol === 'B').toBe(true);
         expect(respBlank.config.path === 'C').toBe(true);
-        expect(respBlank.config.token === 'Check your FAST_SMS_API_TOKEN').toBe(true); // your actual token feeds from EnvVars
+        expect(respBlank.config.token === md5('D')).toBe(true); // 'D' is the value set by mock
         expect(respBlank.config.instanceId === 'E').toBe(true);
     });
 
