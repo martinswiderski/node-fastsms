@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite name="Reads package version" errors="0" tests="1" failures="0" time="0.001" timestamp="2016-02-15T18:44:04">
-  <testcase classname="Reads package version" name="from package.json file" time="0.001"></testcase>
+<testsuite name="Reads package version" errors="0" tests="1" failures="0" time="0" timestamp="2016-02-16T16:18:00">
+  <testcase classname="Reads package version" name="from package.json file" time="0"></testcase>
 </testsuite>
 </testsuites>
