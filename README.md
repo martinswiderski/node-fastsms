@@ -11,8 +11,7 @@
 [![Build Status](https://travis-ci.org/martinswiderski/node-fastsms.svg?branch=master)](https://travis-ci.org/martinswiderski/node-fastsms)
 
 ### Installation
-
-add module to your project's **package.json** file by running
+Install module [from public NPM](https://www.npmjs.com/package/node-fastsms) and add it to your project's **package.json** file by running following command:
 
 ```sh
 $ npm install --save node-fastsms
@@ -24,12 +23,10 @@ cd examples/
 ./send-message.js 447777111222
 ```
 
-make sure you set environment variable FAST_SMS_API_TOKEN by adding 
+**Caution!** Please make sure that [you are registered with FastSMS](http://www.fastsms.co.uk/free-account/) and generate an API token (see their documentation for details), 
+then set environment variable FAST_SMS_API_TOKEN by adding line below to wherever your application is sourcing the [environment variables](https://en.wikipedia.org/wiki/Environment_variable#Assignment) from:
 
 ```sh
 export FAST_SMS_API_TOKEN='your-token-here'
 ```
-
-
-
 
