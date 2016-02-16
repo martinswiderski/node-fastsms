@@ -6,20 +6,36 @@ var mockConfig = {
         token: 'TOKEN',
         messages: {}
     },
-    valid   = require(__dirname + "/../../src/validate"),
-    fastSms = require(__dirname + "/../../src/fast-sms");
-    fastSms.setConfig(mockConfig);
+    md5           = require('md5'),
+    configuration = require(__dirname + "/../../src/configuration"),
+    valid         = require(__dirname + "/../../src/validate"),
+    fastSms       = require(__dirname + "/../../src/fast-sms");
+
+    for (var k in mockConfig) {
+        configuration[k] = mockConfig[k];
+    }
 
 describe("Can send SMS", function () {
 
-    var sentId = fastSms.sendOne('447932415775', 'Hello World%$', 'Martin');
+    var content = 'Hello World%$',
+        sender  = 'Martin',
+        to      = '447932415775',
+        resEnv  = fastSms.sendOne(to, content, sender);
 
-    it("message ID is returned", function () {
-        expect(valid.typeOf(sentId)).toBe('Number');
+    it("message envelope returned is JSON object", function () {
+        expect(valid.typeOf(resEnv)).toBe('Object');
     });
 
-    it("GET request is issued", function () {
-        expect(mockConfig.messages[sentId].url).toBe('https://my.fastsms.co.uk/api?Token=TOKEN&Action=Send&DestinationAddress=447932415775&SourceAddress=Martin&Body=Hello%20World%25%24&ValidityPeriod=259200');
+    it("certain content expected", function () {
+        expect(resEnv.message.id).toBe(654321);
+        expect(resEnv.message.content.md5).toBe(md5(content));
+        expect(resEnv.message.content.source).toBe(sender);
+        expect(resEnv.message.content.target).toBe(to);
+        expect(resEnv.credits).toBe(100);
+        expect(resEnv.http.code).toBe(200);
+        expect(resEnv.http.status).toBe('OK');
+        expect(resEnv.api.code).toBe(false);
+        expect(resEnv.api.status).toBe(false);
     });
 });
 

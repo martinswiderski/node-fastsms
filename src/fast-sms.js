@@ -1,18 +1,15 @@
 var fastsms,
-    valid    = require('./validate'),
-    url      = require('./url'),
-    request  = require('sync-request'),
-    opCode   = require('./op-code'),
-    myLog    = require('./my-log');
+    valid         = require('./validate'),
+    dateTool      = require('./date-tool'),
+    url           = require('./url'),
+    md5           = require('md5'),
+    request       = require('sync-request'),
+    opCode        = require('./op-code'),
+    myLog         = require('./my-log'),
+    response      = require('./response'),
+    configuration = require('./configuration');
 
 fastsms = function fastsms() {
-
-    this.config = {};
-
-    this.setConfig = function (config) {
-        this.config = config; // explicit set method
-        return this;
-    },
 
     /**
      * Sends a message with defined validity and can be scheduled at specific time
@@ -24,7 +21,8 @@ fastsms = function fastsms() {
      * @param bool   check       Optional - status check
      * @param string schedule    Optional - Target timestamp for send the message, format: YYYYMMDDHHMMSS
      *
-     * @returns {int} Message ID 0=Error
+     * @returns {object} response
+     * @see response-spec
      */
     this.sendOne = function (destination, body, source, validity, check, schedule) {
 
@@ -67,7 +65,7 @@ fastsms = function fastsms() {
 
             var opType  = 'Send',
                 payload = {
-                    Token: this.config.token,
+                    Token: configuration.token,
                     Action: opType,
                     DestinationAddress: destination,
                     SourceAddress: source,
@@ -82,48 +80,48 @@ fastsms = function fastsms() {
                 payload['ScheduleDate'] = validity;
             }
 
-            var uriCall = url.build(
-                this.config.protocol,
-                this.config.hostname,
-                this.config.path,
-                payload
-            );
+            var responseEnv = {}, // blank envelope
+                uriCall = url.build(
+                    configuration.protocol,
+                    configuration.hostname,
+                    configuration.path,
+                    payload
+                );
 
             // Mock only ------------------------------------
+            if (configuration.mock === true) {
 
-            if (this.config.mock === true) {
-                var _id = this.generateMockId(),
-                    obj = {
-                        url: uriCall,
-                        payload: payload
-                    };
-                this.config.messages[_id] = obj;
-                return parseInt(_id);
+                responseEnv = response.render('Send', 654321, 200, md5(body), body.length, 123, true, function () { return 100; });
+                responseEnv.message.content.source = source;
+                responseEnv.message.content.target = destination;
+                return responseEnv;
+
             } else {
 
-                // @todo: All refactoring for #5 needs to happen within next 20+ lines and that's the end of it... then only
-                // @todo: change Mock for unit tests
+                var responseStr  = '',
+                    httpApiStart = 0,
+                    httpApiEnd   = 0;
 
-                var responseStr = resp.body.toString('utf-8'),
-                    apiCode     = 0;
+                httpApiStart = dateTool.microtime('float');
+                resp         = request('GET', uriCall);
+                httpApiEnd   = dateTool.microtime('float');
 
-                apiCode = (0 < apiCode) ? apiCode : false;
+                responseStr = resp.body.toString('utf-8');
+                responseEnv = response.render('Send', responseStr, resp.statusCode, md5(body), body.length, (httpApiEnd-httpApiStart), true, this.checkCredits);
 
-
-                resp = request('GET', uriCall),
-                    details = opCode.response(resp.statusCode, apiCode, this.checkCredits()); // @todo: read HTTP Code here, too
-
+                id = parseInt(responseStr);
 
                 if (id < 0) {
                     myLog.log().error('Code: %s %s', id, opCode.resolve(id)); // @todo: consider throw new Error(msg);
                 } else {
-                    myLog.log().info('CREDITS LEFT: %s', this.checkCredits()); // @todo: consider delegating the check for credits to the envelope object
+                    myLog.log().info('CREDITS LEFT: %s', responseEnv.credits); // @todo: consider delegating the check for credits to the envelope object
                     if (check === true) {
                         myLog.log().info('STATUS: %s', this.checkMessageStatus(id)); // @todo: Same story here... maybe not the right place
                     }
                 }
+
+                return responseEnv;
             }
-            // @todo: so you would return JSON from here
 
         } catch (exc) {
             // @todo: or JSON from here
@@ -135,17 +133,17 @@ fastsms = function fastsms() {
     },
 
     this.checkMessageStatus = function (id) {
-        if (this.config.mock === false) {
+        if (configuration.mock === false) {
             var payload = {
                 MessageID: id,
-                Token: this.config.token,
+                Token: configuration.token,
                 Action: 'CheckMessageStatus'
             };
 
             var uriCall = url.build(
-                this.config.protocol,
-                this.config.hostname,
-                this.config.path,
+                configuration.protocol,
+                configuration.hostname,
+                configuration.path,
                 payload
             );
 
@@ -158,26 +156,26 @@ fastsms = function fastsms() {
     },
 
     this.checkCredits = function () {
-        if (this.config.mock === false) {
-            var payload = {
-                Token: this.config.token,
-                Action: 'CheckCredits'
-            };
-
-            var uriCall = url.build(
-                this.config.protocol,
-                this.config.hostname,
-                this.config.path,
-                payload
-            );
-
-            var resp    = request('GET', uriCall),
-                credits = parseInt(resp.body.toString('utf-8'));
-
-            return credits;
+        if (!this.config || !configuration.mock || configuration.mock !== false) {
+            return 654321;
         }
 
-        return -1;
+        var payload = {
+            Token: configuration.token,
+            Action: 'CheckCredits'
+        };
+
+        var uriCall = url.build(
+            configuration.protocol,
+            configuration.hostname,
+            configuration.path,
+            payload
+        );
+
+        var resp    = request('GET', uriCall),
+            credits = parseInt(resp.body.toString('utf-8'));
+
+        return credits;
     },
 
     this.generateMockId = function () {
