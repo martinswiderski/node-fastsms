@@ -101,7 +101,7 @@ describe("Generates response for a valid HTTP transaction in JSON envelope", fun
 describe("Throws error", function () {
     it("on attempt to use invalid action", function () {
         try {
-            respWithBSAction = response.render(
+            var respWithBSAction = response.render(
                 'WatchTV',
                 234567,
                 200,
@@ -112,7 +112,7 @@ describe("Throws error", function () {
                 mockGetCreditsFunction
             );
 
-            expect('Error was expected').toBe('and not raised');
+            expect('Error was expected').toBe('and not raised'); // this should never be fired
 
         } catch (errAct) {
             expect(typeof errAct).toBe('object');
