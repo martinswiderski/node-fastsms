@@ -29,7 +29,7 @@ describe("Generates response for failed HTTP transaction in JSON envelope", func
 
     it("Even blank and incomplete object contains configuration & version id", function () {
         expect(respBlank.version === '0.1.32').toBe(true);
-        expect(respBlank.operation === 'Send').toBe(true);
+        expect(respBlank.action === 'Send').toBe(true);
         expect(respBlank.config.hostname === 'A').toBe(true);
         expect(respBlank.config.protocol === 'B').toBe(true);
         expect(respBlank.config.path === 'C').toBe(true);
@@ -81,7 +81,7 @@ describe("Generates response for a valid HTTP transaction in JSON envelope", fun
     //console.log(JSON.stringify(respValid, null, 4));
 
     it("Message is always given unique UID and numeric ID or zero is allocated", function () {
-        expect(respBlank.operation === 'Send').toBe(true);
+        expect(respBlank.action === 'Send').toBe(true);
         expect(respValid.message.uuid.length === 36).toBe(true);
         expect((typeof respValid.message.id) === 'number').toBe(true);
         expect(respValid.message.id === 234567).toBe(true);
@@ -96,3 +96,28 @@ describe("Generates response for a valid HTTP transaction in JSON envelope", fun
         expect(respValid.error.details.length === 0).toBe(true);
     });
 });
+
+
+describe("Throws error", function () {
+    it("on attempt to use invalid action", function () {
+        try {
+            respWithBSAction = response.render(
+                'WatchTV',
+                234567,
+                200,
+                md5(message),
+                message.length,
+                exec,
+                chkCredits,
+                mockGetCreditsFunction
+            );
+
+            expect('Error was expected').toBe('and not raised');
+
+        } catch (errAct) {
+            expect(typeof errAct).toBe('object');
+            expect(errAct.message).toBe('Invalid action: WatchTV');
+        }
+    });
+});
+

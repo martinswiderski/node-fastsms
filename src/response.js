@@ -4,7 +4,8 @@ var response,
     fs            = require('fs'),
     md5           = require('md5'),
     configuration = require('./configuration'),
-    opCode        = require('./op-code');
+    opCode        = require('./op-code'),
+    actions       = require('./actions');
 
 response = function response() {
 
@@ -14,7 +15,7 @@ response = function response() {
      */
     this.envelope = {
         version: false,
-        operation: '',
+        action: '',
         error: {
             status: false,
             details: []
@@ -77,8 +78,13 @@ response = function response() {
         var date        = new Date(),
             response    = JSON.parse(JSON.stringify(this.envelope));
 
-        response.version   = this.resolveModuleVersion();
-        response.operation = opType;
+        response.version = this.resolveModuleVersion();
+
+        if (actions.isValid(opType) !== true) {
+            throw new Error('Invalid action: ' + opType);
+        }
+
+        response.action = opType;
 
         checkCredits = (false === checkCredits || true === checkCredits) ? checkCredits : false;
 
