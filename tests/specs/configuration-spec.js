@@ -1,3 +1,5 @@
+process.env['FAST_SMS_API_UNIT_TEST'] = '1';
+
 process.env['FAST_SMS_API_HOSTNAME']        = 'A';
 process.env['FAST_SMS_API_PROTOCOL']        = 'B';
 process.env['FAST_SMS_API_PATH']            = 'C';
