@@ -30,11 +30,6 @@ describe("Generates response for failed HTTP transaction in JSON envelope", func
     it("Even blank and incomplete object contains configuration & version id", function () {
         expect(respBlank.version === '0.1.32').toBe(true);
         expect(respBlank.action === 'Send').toBe(true);
-        expect(respBlank.config.hostname === 'A').toBe(true);
-        expect(respBlank.config.protocol === 'B').toBe(true);
-        expect(respBlank.config.path === 'C').toBe(true);
-        expect(respBlank.config.token === md5('D')).toBe(true); // 'D' is the value set by mock
-        expect(respBlank.config.instanceId === 'E').toBe(true);
     });
 
     it("When flag is passed and external function it is called to calculate credits", function () {

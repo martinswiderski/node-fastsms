@@ -5,9 +5,8 @@ var defaults = {
     FAST_SMS_API_CLIENT_INSTANCE: 'fastsmsApiClient01'
 };
 
-if (process.env['FAST_SMS_API_UNIT_TEST'] !== '1') {
-    // don't setup for unit test runs
-    for (var k in defaults) {
+for (var k in defaults) {
+    if (!process.env[k]) {
         process.env[k] = defaults[k];
     }
 }

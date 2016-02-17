@@ -6,14 +6,11 @@ var mockConfig = {
         token: 'TOKEN',
         messages: {}
     },
-    md5           = require('md5'),
-    configuration = require(__dirname + "/../../src/configuration"),
-    valid         = require(__dirname + "/../../src/validate"),
-    fastSms       = require(__dirname + "/../../src/fast-sms");
-
-    for (var k in mockConfig) {
-        configuration[k] = mockConfig[k];
-    }
+    md5             = require('md5'),
+    //configuration = require(__dirname + "/../../src/configuration"),
+    configuration   = mockConfig,
+    valid           = require(__dirname + "/../../src/validate"),
+    fastSms         = require(__dirname + "/../../src/fast-sms");
 
 describe("Can send SMS", function () {
 
