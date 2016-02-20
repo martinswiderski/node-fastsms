@@ -7,8 +7,7 @@ process.env['FAST_SMS_API_TOKEN']           = 'D';
 process.env['FAST_SMS_API_CLIENT_INSTANCE'] = 'E';
 
 var nodeFastSms  = require('../../index'),
-    errorMessage = {},
-    err          = {};
+    errorMessage;
 
 describe("Core tests", function () {
     // implementation not ready yet...
