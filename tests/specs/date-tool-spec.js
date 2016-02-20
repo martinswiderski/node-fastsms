@@ -15,3 +15,32 @@ describe("Can transform between formats", function () {
     });
 });
 
+describe("Can generate microtime", function () {
+    it("by default as INT", function () {
+        var asIntDefault = dateTool.microtime();
+        expect((asIntDefault + '' === parseInt(asIntDefault) + '')).toBe(true);
+    });
+    it("by default as INT", function () {
+        var asIntExplicit = dateTool.microtime('integer');
+        expect((asIntExplicit + '' === parseInt(asIntExplicit) + '')).toBe(true);
+    });
+    it("as FLOAT", function () {
+        var asFloat = dateTool.microtime('float');
+        expect((new String(asFloat)).split('.').length).toBe(2);
+    });
+});
+
+
+describe("Can calculate execution time", function () {
+
+    var microtimeBefore = dateTool.microtime();
+    for (var i = 0; i < 50000000; i++) {
+        // loop
+    }
+    var microtimeAfter = dateTool.microtime();
+
+    it("Exec expected to be more than 10 ms", function () {
+        var asIntDefault = dateTool.microtime();
+        expect((microtimeAfter - microtimeBefore) > 5).toBe(true);
+    });
+});
