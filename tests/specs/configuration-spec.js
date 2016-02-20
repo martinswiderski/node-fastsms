@@ -1,16 +1,16 @@
-process.env['FAST_SMS_API_HOSTNAME']        = 'A';
-process.env['FAST_SMS_API_PROTOCOL']        = 'B';
-process.env['FAST_SMS_API_PATH']            = 'C';
-process.env['FAST_SMS_API_TOKEN']           = 'D';
-process.env['FAST_SMS_API_CLIENT_INSTANCE'] = 'E';
+if (!process.env['FAST_SMS_API_TOKEN'] || process.env['FAST_SMS_API_TOKEN'].length === 0) {
+    process.env['FAST_SMS_API_TOKEN'] = 'MADE-UP-FOR-TEST'; // just to avoid exception
+}
 
 var configuration = require(__dirname + "/../../src/configuration");
 
+console.log(configuration);
+
 describe("Reads from env vars", function () {
-    it("regardless how they are sey", function () {
-        expect(configuration.hostname).toBe('A');
-        expect(configuration.protocol).toBe('B');
-        expect(configuration.path).toBe('C');
-        expect(configuration.token).toBe('D');
+    it("if they are set", function () {
+        expect(configuration.hostname + '').toBe('my.fastsms.co.uk');
+        expect(configuration.protocol + '').toBe('https');
+        expect(configuration.path + '').toBe('/api');
+        expect(configuration.token + '').toBe('MADE-UP-FOR-TEST');
     });
 });
