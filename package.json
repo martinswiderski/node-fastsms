@@ -1,6 +1,6 @@
 {
   "name": "node-fastsms",
-  "version": "0.1.2",
+  "version": "0.1.32",
   "description": "FastSMS SDK API",
   "main": "index.js",
   "repository": {
@@ -15,8 +15,9 @@
     }
   ],
   "scripts": {
-    "test": "export FAST_SMS_API_UNIT_TEST='1'; jasmine-node tests/; echo '' > log/unit-test.log",
-    "jslint": "jslint server.js src/*.js"
+    "test": "./shell/runAllJasmine.sh",
+    "jslint": "jslint server.js src/*.js",
+    "eslint": "./shell/eslintCheck.sh"
   },
   "engines": {
     "node": "0.10.x"
@@ -25,11 +26,13 @@
     "jasmine-node": "^1.14.5",
     "lodash": "^2.4.1",
     "log4js": "^0.6.31",
+    "md5": "^2.0.0",
     "moment": "^2.10.6",
     "q": "^1.1.2",
     "querystring": "^0.2.0",
     "sync-request": "^2.1.0",
     "system": "0.1.0",
+    "unix-time": "^1.0.1",
     "uuid": "^2.0.1"
   },
   "devDependencies": {
