@@ -46,6 +46,24 @@ dateTool = function dateTool() {
         var now = moment().unix(),
             trg = this.reformatDateUnix(input);
         return trg > now;
+    },
+
+   /**
+    * Gets current microtime as int or double
+    * @returns int
+    */
+    this.microtime = function (format) {
+        var allowed = {
+            integer: 1,
+            float: 2
+        };
+
+        if (!format || !allowed[format]) {
+            return parseInt((process.hrtime()[0] * 1000000 + process.hrtime()[1] / 1000) / 1000);
+        } else {
+            return (allowed[format] === 1) ? parseInt((process.hrtime()[0] * 1000000 + process.hrtime()[1] / 1000) / 1000)
+                                           : parseFloat((process.hrtime()[0] * 1000000 + process.hrtime()[1] / 1000) / 1000);
+        }
     };
 };
 
