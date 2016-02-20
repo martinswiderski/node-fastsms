@@ -4,8 +4,6 @@ if (!process.env['FAST_SMS_API_TOKEN'] || process.env['FAST_SMS_API_TOKEN'].leng
 
 var configuration = require(__dirname + "/../../src/configuration");
 
-console.log(configuration);
-
 describe("Reads from env vars", function () {
     it("if they are set", function () {
         expect(configuration.hostname + '').toBe('my.fastsms.co.uk');
