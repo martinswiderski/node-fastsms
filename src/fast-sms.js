@@ -175,39 +175,39 @@ fastsms = function fastsms() {
     },
 
     this.reports = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.createUser = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.updateCredits = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.importContactsCsv = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.deleteAllContacts = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.deleteAllGroups = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.emptyGroup = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.deleteGroup = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     },
 
     this.getBgMessages = function() {
-        return 'not implemented';
+        throw new Error('not implemented');
     };
 
 };
