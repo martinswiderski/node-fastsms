@@ -1,5 +1,5 @@
 var fastsms,
-    //configuration = require('./configuration'),
+    configuration = require('./configuration'),
     valid         = require('./validate'),
     url           = require('./url'),
     request       = require('sync-request'),
@@ -8,12 +8,7 @@ var fastsms,
 
 fastsms = function fastsms() {
 
-    this.config = {};
-
-    this.setConfig = function (config) {
-        this.config = config; // explicit set method
-        return this;
-    },
+    this.config = configuration;
 
     /**
      * Sends a message with defined validity and can be scheduled at specific time
@@ -29,6 +24,7 @@ fastsms = function fastsms() {
      */
     this.sendOne = function (destination, body, source, validity, check, schedule) {
 
+        // @todo: re-plant implementation
         var id = 0;
 
         try {

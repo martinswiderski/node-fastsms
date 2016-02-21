@@ -13,6 +13,7 @@ var fastSms = require(__dirname + "/../index"),
     );
 
 } catch (err) {
+    // @todo: change
     console.log(err);
     process.exit(1);
 }
