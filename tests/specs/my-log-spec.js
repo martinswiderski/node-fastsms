@@ -1,9 +1,15 @@
+process.env['UNIT_TEST_LOG'] = '1';
+
 var myLog = require(__dirname + "/../../src/my-log"),
     path  = require('path'),
     fs    = require('fs'),
     uuid  = require('uuid');
 
-    myLog.logFileCommon = 'unit-test.log'; // swap log file
+describe("Defines global constant", function () {
+    it("__line for line number in file", function () {
+        expect(parseInt(__line)).toBe(10);
+    });
+});
 
 describe("Log implementation", function () {
     it("Has a common log file", function () {
@@ -31,10 +37,10 @@ describe("Log implementation", function () {
         };
 
     // running all logs...
-    myLog.log().info('Error ID: %s', uid);
-    myLog.log().warn('Error ID: %s', uid);
-    myLog.log().error('Error ID: %s', uid);
-    myLog.log().fatal('Error ID: %s', uid);
+    myLog.log().info('Error ID: %s - Line: %s, File: %s', uid, __line, path.basename(__filename));
+    myLog.log().warn('Error ID: %s - Line: %s, File: %s', uid, __line, path.basename(__filename));
+    myLog.log().error('Error ID: %s - Line: %s, File: %s', uid, __line, path.basename(__filename));
+    myLog.log().fatal('Error ID: %s - Line: %s, File: %s', uid, __line, path.basename(__filename));
 
     var buffer = fs.readFileSync(myLog.logsDir + '/' + myLog.logFileCommon),
         logStr = buffer.toString();
